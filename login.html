@@ -4,158 +4,277 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - PIPAKATAN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: radial-gradient(circle at 12% 18%, #2b2a72 0%, #12183f 45%, #0a1230 100%);
+            font-family: 'Roboto', sans-serif;
+            background: #121320;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 24px;
         }
-        
+
+        .site-footer-login {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            text-align: center;
+            color: #b4b8c7;
+            font-size: 0.8em;
+            padding: 10px 14px;
+            background: rgba(18, 19, 32, 0.85);
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(4px);
+            z-index: 20;
+        }
+
         .login-shell {
             width: 100%;
-            max-width: 1100px;
-            min-height: auto;
-            border-radius: 18px;
+            max-width: 1020px;
+            min-height: 640px;
+            border-radius: 16px;
             overflow: hidden;
             display: grid;
-            grid-template-columns: 44% 56%;
-            box-shadow: 0 22px 60px rgba(2, 20, 44, 0.45);
-            background: linear-gradient(140deg, rgba(18, 24, 68, 0.84), rgba(8, 16, 46, 0.88));
-            border: 1px solid rgba(129, 140, 248, 0.24);
-            backdrop-filter: blur(2px);
+            grid-template-columns: 1fr 1fr;
+            background: #f4f4f7;
+            box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
         }
 
         .login-left {
-            background: transparent;
-            padding: 36px 34px;
+            background: #ececf1;
+            padding: 30px;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             position: relative;
+        }
+
+        .brand {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 44px;
+            text-align: center;
+        }
+
+        .brand-text {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.05;
+        }
+
+        .brand-title {
+            font-size: 1.45em;
+            font-weight: 800;
+            letter-spacing: 0.4px;
+            color: #0f0f17;
+        }
+
+        .brand-subtitle {
+            margin-top: 8px;
+            font-size: 0.68em;
+            font-weight: 500;
+            letter-spacing: 0.2px;
+            color: #6f7484;
+            line-height: 1.4;
+            max-width: 330px;
+        }
+
+        .illustration-frame {
+            width: 100%;
+            max-width: 380px;
+            height: 420px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 12px;
+            background: #efeff3;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 26px;
+        }
+
+        .illustration-logo {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            object-position: center;
+            max-width: 300px;
+            max-height: 300px;
         }
 
         .login-right {
-            position: relative;
-            min-height: 620px;
-            background: linear-gradient(150deg, rgba(18, 40, 113, 0.65), rgba(9, 29, 86, 0.82));
-            overflow: hidden;
+            background: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 44px 42px;
         }
 
-        .login-right img {
+        .form-card {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center;
-            filter: saturate(1.06) contrast(1.02);
-            opacity: 0.7;
+            max-width: 360px;
         }
-        
+
+        .form-top-icon {
+            text-align: center;
+            font-size: 2em;
+            color: #12131d;
+            margin-bottom: 10px;
+        }
+
         .login-header {
             text-align: center;
-            margin-bottom: 22px;
+            margin-bottom: 24px;
         }
-        
-        .login-icon {
-            width: 86px;
-            height: 86px;
-            object-fit: contain;
-            margin-bottom: 8px;
-        }
-        
-        .app-name {
-            color: #c7d2fe;
-            font-size: 2.15em;
-            font-weight: 800;
-            margin-bottom: 4px;
-            letter-spacing: 1px;
-        }
-        
+
         h1 {
-            color: #e2e8f0;
-            font-size: 1.45em;
+            color: #13131d;
+            font-size: 2.05em;
             margin-bottom: 8px;
             font-weight: 800;
         }
-        
+
         .subtitle {
-            color: #94a3b8;
-            font-size: 0.95em;
-            line-height: 1.45;
-            max-width: 420px;
+            color: #8f93a2;
+            font-size: 0.92em;
+            line-height: 1.4;
             margin: 0 auto;
         }
-        
+
         .form-group {
-            margin-bottom: 14px;
+            margin-bottom: 16px;
         }
-        
+
         label {
             display: block;
-            color: #cbd5e1;
-            font-weight: 700;
-            margin-bottom: 7px;
-            font-size: 0.9em;
+            color: #5f6372;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.86em;
         }
-        
+
         input[type="text"],
         input[type="password"] {
             width: 100%;
-            padding: 11px 13px;
-            border: 1px solid rgba(148, 163, 184, 0.5);
-            border-radius: 7px;
+            padding: 11px 2px;
+            border: none;
+            border-bottom: 1px solid #d6d8e1;
             font-size: 0.95em;
-            background: rgba(255, 255, 255, 0.09);
-            color: #f8fafc;
-            transition: all 0.3s ease;
+            background: transparent;
+            color: #151621;
+            transition: border-color 0.2s ease;
+            border-radius: 0;
         }
 
         input::placeholder {
-            color: #94a3b8;
+            color: #b4b8c7;
         }
-        
+
         input[type="text"]:focus,
         input[type="password"]:focus {
             outline: none;
-            border-color: #60a5fa;
-            box-shadow: 0 0 0 3px rgba(96, 165, 250, 0.18);
+            border-bottom-color: #1a1b28;
         }
-        
+
         .btn-login {
             width: 100%;
-            padding: 11px;
-            background: linear-gradient(90deg, #ea580c 0%, #fb923c 55%, #f97316 100%);
+            padding: 12px;
+            background: #0f1120;
             color: #fff;
             border: none;
-            border-radius: 7px;
-            font-size: 0.98em;
-            font-weight: 800;
+            border-radius: 28px;
+            font-size: 0.96em;
+            font-weight: 700;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 8px;
-            letter-spacing: 0.4px;
+            margin-top: 12px;
         }
-        
+
         .btn-login:hover {
             transform: translateY(-1px);
-            box-shadow: 0 8px 20px rgba(157, 122, 36, 0.35);
+            box-shadow: 0 10px 20px rgba(15, 17, 32, 0.24);
         }
-        
+
+        .login-helper {
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 0.78em;
+            color: #8f93a2;
+        }
+
+        .login-helper label {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin: 0;
+            color: #8f93a2;
+            font-size: 1em;
+            font-weight: 500;
+            cursor: pointer;
+        }
+
+        .login-helper input[type="checkbox"] {
+            accent-color: #0f1120;
+        }
+
+        .login-helper a {
+            text-decoration: none;
+            color: #8f93a2;
+            font-weight: 500;
+        }
+
+        .login-helper a:hover {
+            color: #424654;
+        }
+
+        .btn-google {
+            width: 100%;
+            margin-top: 12px;
+            border: none;
+            border-radius: 28px;
+            padding: 11px;
+            background: #f5f5f8;
+            color: #4d5160;
+            font-weight: 600;
+            font-size: 0.86em;
+        }
+
+        .form-footer {
+            margin-top: 26px;
+            text-align: center;
+            font-size: 0.78em;
+            color: #9094a3;
+        }
+
+        .form-footer a {
+            color: #565b6c;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
         .btn-login:active {
             transform: translateY(0);
         }
-        
+
         .error-message {
-            background: #fef2f2;
+            background: #fff3f3;
             color: #b91c1c;
             padding: 10px;
             border-radius: 8px;
@@ -163,47 +282,111 @@
             display: none;
             border: 1px solid #fecaca;
             animation: shake 0.5s ease;
+            font-size: 0.85em;
         }
-        
+
+        .success-popup-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(15, 17, 32, 0.45);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            padding: 20px;
+        }
+
+        .success-popup-overlay.show {
+            display: flex;
+        }
+
+        .success-popup {
+            width: 100%;
+            max-width: 360px;
+            background: #ffffff;
+            border-radius: 14px;
+            padding: 22px 18px;
+            text-align: center;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.22);
+            border: 1px solid #e5e7eb;
+            animation: popupIn 0.2s ease-out;
+        }
+
+        .success-popup.error {
+            border: 1px solid #fecaca;
+            background: #fff7f7;
+        }
+
+        .success-popup-icon {
+            font-size: 2em;
+            margin-bottom: 10px;
+        }
+
+        .success-popup-title {
+            font-size: 1.1em;
+            font-weight: 700;
+            color: #111827;
+            margin-bottom: 5px;
+        }
+
+        .success-popup-text {
+            color: #6b7280;
+            font-size: 0.9em;
+        }
+
+        @keyframes popupIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px) scale(0.98);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
         @keyframes shake {
             0%, 100% { transform: translateX(0); }
             25% { transform: translateX(-10px); }
             75% { transform: translateX(10px); }
         }
-        
+
         .password-toggle {
             position: relative;
         }
-        
+
         .toggle-icon {
             position: absolute;
-            right: 15px;
+            right: 2px;
             top: 50%;
             transform: translateY(-50%);
             cursor: pointer;
-            font-size: 1em;
-            color: #94a3b8;
+            font-size: 0.95em;
+            color: #9da1af;
             user-select: none;
         }
-        
+
         .toggle-icon:hover {
-            color: #5a74db;
+            color: #424654;
         }
 
         @media (max-width: 960px) {
             body { padding: 16px; }
 
             .login-shell {
-                max-width: 540px;
+                max-width: 620px;
                 grid-template-columns: 1fr;
+                min-height: auto;
             }
 
             .login-left {
-                padding: 30px 24px;
+                min-height: 360px;
+                padding: 24px;
             }
 
-            .login-right {
-                min-height: 240px;
+            .illustration-frame {
+                max-width: 320px;
+                height: 250px;
             }
         }
 
@@ -215,15 +398,19 @@
             }
 
             .login-right {
-                min-height: 200px;
+                padding: 34px 22px;
             }
 
-            .app-name {
-                font-size: 1.85em;
+            .brand-title {
+                font-size: 1.1em;
+            }
+
+            .brand-subtitle {
+                font-size: 0.66em;
             }
 
             h1 {
-                font-size: 1.4em;
+                font-size: 1.8em;
             }
 
             .subtitle {
@@ -235,54 +422,98 @@
 <body>
     <div class="login-shell">
         <div class="login-left">
-            <div class="login-header">
-                <img src="data/pipakatan.png" alt="Logo DINUNG PIPAKATAN" class="login-icon" onerror="this.style.display='none'">
-                <div class="app-name">DINUNG PIPAKATAN</div>
-                <h1>Dashboard Login</h1>
-                <p class="subtitle">Dashboard Interaktif Nilai Guna pada Pemetaan Penerimaan Pendapatan Pajak dan Retribusi Berdasarkan Kanal Pembayaran</p>
+            <div class="brand">
+                <div class="brand-text">
+                    <div class="brand-title">DINUNG PIPAKATAN</div>
+                    <div class="brand-subtitle">BADAN PENDAPATAN DAERAH KABUPATEN BARITO TIMUR</div>
+                </div>
             </div>
-            
-            <div id="errorMessage" class="error-message"></div>
-            
-            <form id="loginForm" onsubmit="handleLogin(event)">
-                <div class="form-group">
-                    <label for="username">Username</label>
-                    <input 
-                        type="text" 
-                        id="username" 
-                        name="username" 
-                        placeholder="Masukkan username"
-                        required
-                        autocomplete="username"
-                    />
-                </div>
-                
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <div class="password-toggle">
-                        <input 
-                            type="password" 
-                            id="password" 
-                            name="password" 
-                            placeholder="Masukkan password"
-                            required
-                            autocomplete="current-password"
-                        />
-                        <span class="toggle-icon" onclick="togglePassword()">👁️</span>
-                    </div>
-                </div>
-                
-                <button type="submit" class="btn-login">
-                    MASUK
-                </button>
-            </form>
+            <div class="illustration-frame" aria-hidden="true">
+                <img src="data/pipakatan.png" alt="Ilustrasi Logo PIPAKATAN" class="illustration-logo" onerror="this.style.display='none'">
+            </div>
+            <div></div>
         </div>
 
         <div class="login-right">
-            <img src="data/loginLogo.png" alt="Ilustrasi login" onerror="this.src='data/pelayananBapenda.jpeg'">
-        </div>
+            <div class="form-card">
+                
+                <div class="login-header">
+                    <h1>Selamat Datang</h1>
+                    <p class="subtitle">Isikan detail login Anda</p>
+                </div>
+            
+                <div id="errorMessage" class="error-message"></div>
 
+                <form id="loginForm" onsubmit="handleLogin(event)">
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input 
+                            type="text" 
+                            id="username" 
+                            name="username" 
+                            placeholder="Masukkan username Anda"
+                            required
+                            maxlength="32"
+                            pattern="[A-Za-z0-9._-]{3,32}"
+                            autocomplete="username"
+                        />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-toggle">
+                            <input 
+                                type="password" 
+                                id="password" 
+                                name="password" 
+                                placeholder="Masukkan password Anda"
+                                required
+                                minlength="6"
+                                maxlength="64"
+                                autocomplete="current-password"
+                            />
+                            <span class="toggle-icon" onclick="togglePassword()">👁️</span>
+                        </div>
+                    </div>
+
+                    <div class="login-helper">
+                        <label>
+                            <input type="checkbox" name="remember" /> Ingat saya selama 30 hari
+                        </label>
+                        <a href="#" onclick="return false;">Lupa password</a>
+                    </div>
+
+                    <button type="submit" class="btn-login">
+                        Masuk
+                    </button>
+
+                   
+                </form>
+
+                
+            </div>
+        </div>
     </div>
+
+    <div id="successPopup" class="success-popup-overlay" aria-hidden="true">
+        <div class="success-popup" role="alert" aria-live="assertive">
+            <div class="success-popup-icon">✅</div>
+            <div class="success-popup-title">Login Berhasil</div>
+            <div class="success-popup-text">Anda akan diarahkan ke dashboard...</div>
+        </div>
+    </div>
+
+    <div id="failedPopup" class="success-popup-overlay" aria-hidden="true">
+        <div class="success-popup error" role="alert" aria-live="assertive">
+            <div class="success-popup-icon">❌</div>
+            <div class="success-popup-title">Login Gagal</div>
+            <div class="success-popup-text">Username atau password salah.</div>
+        </div>
+    </div>
+
+    <footer class="site-footer-login">
+        © 2026 DINUNG PIPAKATAN • BADAN PENDAPATAN DAERAH KABUPATEN BARITO TIMUR
+    </footer>
 
     <script src="auth.js"></script>
 </body>
